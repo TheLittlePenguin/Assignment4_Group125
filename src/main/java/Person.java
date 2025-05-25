@@ -115,6 +115,14 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
                     }
                 }
 
+                //condition 2
+                if (existingBirthdate.equals(birthdate)) {
+                    int age = calculateAge(birthdate);
+                    if (age < 18 && !address.equals(existingAddress)) {
+                        return false;
+                    }
+                }
+
     return true;
 }
 
