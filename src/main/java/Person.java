@@ -10,6 +10,7 @@ private String address;
 private String birthdate;
 private HashMap<Date, Integer> demeritPoints;
 private boolean isSuspended;
+private String filePath = "person.txt";
 
 
 public boolean addPerson() {
