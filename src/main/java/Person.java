@@ -142,12 +142,14 @@ public class Person {
                 }
 
                 //validation
-                if (!isValidPersonID(newID) || !isValidAddress(address) || !isValidBirthdate(birthdate)) {
+                if (!isValidPersonID(newPersonID) || !isValidAddress(address) || !isValidBirthdate(birthdate)) {
                     return false;
                 }
 
                 return true;
             }
+        }
+    }
 
 
 
