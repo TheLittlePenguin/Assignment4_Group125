@@ -129,6 +129,11 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
                     return false;
                 }
 
+                //validation
+                if (!isValidPersonID(newID) || !isValidAddress(address) || !isValidBirthdate(birthdate)) {
+                    return false;
+                }
+
     return true;
 }
 
