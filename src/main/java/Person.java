@@ -16,6 +16,7 @@ private String birthdate;
 private HashMap<Date, Integer> demeritPoints;
 private boolean isSuspended;
 private String filePath = "person.txt";
+private String newPersonID;
 
 
 public boolean addPerson(String personID, String address, String birthdate, String filePath) {
@@ -79,7 +80,21 @@ public boolean addPerson(String personID, String address, String birthdate, Stri
     return true;
 }
 
-public boolean updatePersonalDetails() {
+public boolean updatePersonalDetails(String personID, String newPersonID, String firstName, String lastName,
+                                                String address, String birthdate, String filePath) {
+    List<String> lines = new ArrayList<>();
+        boolean updated = false;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                if (data.length < 6) {
+                    lines.add(line);
+                    continue;
+                }
 
     return true;
 }
