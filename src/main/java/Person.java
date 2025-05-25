@@ -107,6 +107,14 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
                     continue;
                 }
 
+                //condition 1
+                if (!existingBirthdate.equals(birthdate)) {
+                    if (!newID.equals(originalID) || !firstName.equals(existingFirstName) ||
+                        !lastName.equals(existingLastName) || !address.equals(existingAddress)) {
+                        return false;
+                    }
+                }
+
     return true;
 }
 
