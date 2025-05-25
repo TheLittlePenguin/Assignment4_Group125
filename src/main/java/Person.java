@@ -16,7 +16,7 @@ private boolean isSuspended;
 private String filePath = "person.txt";
 
 
-public boolean addPerson(String personID) {
+public boolean addPerson(String personID, String address, String birthdate, String filePath) {
     
     // condition 1 start
     if (personID.length() != 10) return false;
