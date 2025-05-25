@@ -42,12 +42,7 @@ public boolean addPerson(String personID) {
         if (specialCount < 2) return false;
     //condition 1 end
 
-    //conditon 2 start 
-    String[] parts = address.split("\\|");
-        if (parts.length != 5) return false;
-        if (!parts[3].trim().equalsIgnoreCase("Victoria")) return false;
-
-    //condition 2 end
+    
 
     //conditon 3 start
 
