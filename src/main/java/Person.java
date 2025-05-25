@@ -109,7 +109,7 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
 
                 //condition 1
                 if (!existingBirthdate.equals(birthdate)) {
-                    if (!newID.equals(originalID) || !firstName.equals(existingFirstName) ||
+                    if (!newPersonID.equals(personID) || !firstName.equals(existingFirstName) ||
                         !lastName.equals(existingLastName) || !address.equals(existingAddress)) {
                         return false;
                     }
@@ -121,6 +121,12 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
                     if (age < 18 && !address.equals(existingAddress)) {
                         return false;
                     }
+                }
+
+                //condition 3
+                char firstChar = existingID.charAt(0);
+                if (Character.isDigit(firstChar) && (firstChar - '0') % 2 == 0 && !newPersonID.equals(personID)) {
+                    return false;
                 }
 
     return true;
