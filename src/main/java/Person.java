@@ -65,6 +65,14 @@ public boolean addPerson(String personID, String address, String birthdate, Stri
 
     //conditon 3 end
 
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write(personID + "," + address + "," + birthdate);
+            writer.newLine();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+
 
     return true;
 }
