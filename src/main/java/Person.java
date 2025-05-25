@@ -42,6 +42,29 @@ public boolean addPerson(String personID) {
         if (specialCount < 2) return false;
     //condition 1 end
 
+    //conditon 2 start 
+    String[] parts = address.split("\\|");
+        if (parts.length != 5) return false;
+        if (!parts[3].trim().equalsIgnoreCase("Victoria")) return false;
+
+    //condition 2 end
+
+    //conditon 3 start
+
+    if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")) return false;
+        String[] dateParts = birthdate.split("-");
+        try {
+            int day = Integer.parseInt(dateParts[0]);
+            int month = Integer.parseInt(dateParts[1]);
+            int year = Integer.parseInt(dateParts[2]);
+
+            if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900) return false;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+    //conditon 3 end
+
 
     return true;
 }
