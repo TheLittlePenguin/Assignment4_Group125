@@ -92,8 +92,9 @@ public class Person {
         return true;
     }
 
-    public boolean updatePersonalDetails(String personID, String newPersonID, String firstName, String lastName,
-            String address, String birthdate, String filePath) {
+    public boolean updatePersonalDetails(String personID, String newPersonID, String firstName, String lastName,String address, String birthdate, String filePath) {
+        
+        
         List<String> lines = new ArrayList<>();
         boolean updated = false;
 
@@ -149,6 +150,7 @@ public class Person {
                 return true;
             }
         }
+        return true;
     }
 
 
