@@ -102,7 +102,7 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
                 String existingAddress = data[3];
                 String existingBirthdate = data[4];
 
-                if (!existingID.equals(originalID)) {
+                if (!existingID.equals(personID)) {
                     lines.add(line);
                     continue;
                 }
