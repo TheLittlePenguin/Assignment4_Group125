@@ -17,6 +17,8 @@ private String filePath = "person.txt";
 
 
 public boolean addPerson(String personID) {
+    
+    // condition 1 start
     if (personID.length() != 10) return false;
 
         
@@ -29,6 +31,16 @@ public boolean addPerson(String personID) {
     char secondLast = personID.charAt(8);
     char last = personID.charAt(9);
     if (!Character.isUpperCase(secondLast) || !Character.isUpperCase(last)) return false;
+
+    int specialCount = 0;
+        for (int i = 2; i <= 7; i++) {
+            char ch = personID.charAt(i);
+            if (!Character.isLetterOrDigit(ch)) {
+                specialCount++;
+            }
+        }
+        if (specialCount < 2) return false;
+    //condition 1 end
 
 
     return true;
