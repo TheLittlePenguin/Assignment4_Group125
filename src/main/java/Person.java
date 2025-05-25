@@ -96,6 +96,17 @@ public boolean updatePersonalDetails(String personID, String newPersonID, String
                     continue;
                 }
 
+                String existingID = data[0];
+                String existingFirstName = data[1];
+                String existingLastName = data[2];
+                String existingAddress = data[3];
+                String existingBirthdate = data[4];
+
+                if (!existingID.equals(originalID)) {
+                    lines.add(line);
+                    continue;
+                }
+
     return true;
 }
 
