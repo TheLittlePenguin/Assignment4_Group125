@@ -169,6 +169,11 @@ public class Person {
         return specialCount >= 2;
     }
 
+    private static boolean isValidAddress(String address) {
+        String[] parts = address.split("\\|");
+        return parts.length == 5 && parts[3].trim().equalsIgnoreCase("Victoria");
+    }
+
 
 
 
