@@ -222,6 +222,11 @@ public class Person {
 
         if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) return "Failed";
 
+        if (points < 1 || points > 6) return "Failed";
+
+        List<String> lines = new ArrayList<>();
+        boolean updated = false;
+
         return "Success";
     }
 
