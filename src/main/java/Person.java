@@ -169,7 +169,7 @@ public class Person {
         return specialCount >= 2;
     }
 
-    
+
 
 
 
