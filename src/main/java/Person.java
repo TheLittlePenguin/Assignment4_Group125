@@ -175,6 +175,22 @@ public class Person {
     }
 
 
+    private static boolean isValidBirthdate(String birthdate) {
+        if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")) return false;
+
+        try {
+            String[] parts = birthdate.split("-");
+            int day = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int year = Integer.parseInt(parts[2]);
+
+            return (day >= 1 && day <= 31 && month >= 1 && month <= 12 && year >= 1900);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
 
 
 
