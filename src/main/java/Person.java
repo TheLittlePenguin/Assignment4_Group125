@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
 public class Person {
 
     private String personID;
@@ -21,6 +20,7 @@ public class Person {
     private boolean isSuspended;
     private String filePath = "person.txt";
     private String newPersonID;
+    private String offenseDate;
 
     public boolean addPerson(String personID, String address, String birthdate, String filePath) {
 
