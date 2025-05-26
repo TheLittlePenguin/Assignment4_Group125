@@ -22,6 +22,7 @@ public class Person {
     private String filePath = "person.txt";
     private String newPersonID;
     private String offenseDate;
+    private int points;
 
     public boolean addPerson(String personID, String address, String birthdate, String filePath) {
 
@@ -217,7 +218,9 @@ public class Person {
 
     
 
-    public String addDemeritPoints() {
+    public String addDemeritPoints(String personID, String offenseDate, int points, String filePath) {
+
+        if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) return "Failed";
 
         return "Success";
     }
