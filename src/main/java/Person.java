@@ -190,6 +190,13 @@ public class Person {
         }
     }
 
+    private static int calculateAge(String birthdate) {
+        String[] parts = birthdate.split("-");
+        int birthYear = Integer.parseInt(parts[2]);
+        Calendar today = Calendar.getInstance();
+        return today.get(Calendar.YEAR) - birthYear;
+    }
+
 
 
 
