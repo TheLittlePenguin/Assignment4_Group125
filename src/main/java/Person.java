@@ -1,6 +1,14 @@
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 public class Person {
 
@@ -84,7 +92,7 @@ public class Person {
             return false;
         }
 
-        return true;
+        
     }
 
     public boolean updatePersonalDetails(String personID, String newPersonID, String firstName, String lastName,String address, String birthdate, String filePath) {
@@ -141,9 +149,14 @@ public class Person {
                 if (!isValidPersonID(newPersonID) || !isValidAddress(address) || !isValidBirthdate(birthdate)) {
                     return false;
                 }
+                String updatedLine = String.join(",", newPersonID, firstName, lastName, address, birthdate, data[5]); // keep demerits/suspension
+                lines.add(updatedLine);
+                updated = true;
 
                 return true;
-            }
+            } 
+        } catch (IOException e) {
+            return false;
         }
         return true;
     }
