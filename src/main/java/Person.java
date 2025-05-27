@@ -301,12 +301,14 @@ public class Person {
                         recentPoints += entry.getValue();
                     }
                 }
-
+                
+                //calculating age against current demerit points
                 int age = calculateAge(birthdate);
                 if ((age < 21 && recentPoints > 6) || (age >= 21 && recentPoints > 12)) {
                     isSuspended = true;
                 }
 
+                //updating offenses
                 StringBuilder updatedOffenses = new StringBuilder();
                 for (Map.Entry<String, Integer> entry : offenses.entrySet()) {
                     if (updatedOffenses.length() > 0) {
