@@ -250,6 +250,7 @@ public class Person {
         return offenses;
     }
 
+    //calculate demeritpoints for within two years
     private static boolean isWithinLastTwoYears(String dateStr) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
