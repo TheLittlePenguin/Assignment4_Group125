@@ -1,9 +1,8 @@
-import org.junit.jupiter.api.*;
-import java.io.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-
 
 public class PersonTest {
+
+    private static final String TEST_FILE = "test_people.txt";
+
+    
     
 }
