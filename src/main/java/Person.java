@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Person {
@@ -252,6 +253,13 @@ public class Person {
                     lines.add(line);
                     continue;
                 }
+
+                String birthdate = parts[4];
+                String offenseData = parts[5];
+                boolean isSuspended = parts.length > 6 && parts[6].equalsIgnoreCase("true");
+
+                Map<String, Integer> offenses = parseOffenseData(offenseData);
+                offenses.put(offenseDate, points);
 
         } catch (IOException e) {
             return "Failed";
