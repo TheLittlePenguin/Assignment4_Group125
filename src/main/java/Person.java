@@ -240,7 +240,25 @@ public class Person {
         List<String> lines = new ArrayList<>();
         boolean updated = false;
 
-        return "Success";
-    }
 
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+
+                if (parts.length < 6 || !parts[0].equals(personID)) {
+                    lines.add(line);
+                    continue;
+                }
+
+        } catch (IOException e) {
+            return "Failed";
+        }
+
+        return "Success";
+        }
+
+}
 }
