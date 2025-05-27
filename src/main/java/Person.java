@@ -206,10 +206,23 @@ public class Person {
     }
 
     private static int calculateAge(String birthdate) {
-        String[] parts = birthdate.split("-");
-        int birthYear = Integer.parseInt(parts[2]);
-        Calendar today = Calendar.getInstance();
-        return today.get(Calendar.YEAR) - birthYear;
+        try {
+            String[] parts = birthdate.split("-");
+            int birthYear = Integer.parseInt(parts[2]);
+            int birthMonth = Integer.parseInt(parts[1]);
+            int birthDay = Integer.parseInt(parts[0]);
+
+            Calendar today = Calendar.getInstance();
+            int age = today.get(Calendar.YEAR) - birthYear;
+
+            if (today.get(Calendar.MONTH) + 1 < birthMonth ||
+                (today.get(Calendar.MONTH) + 1 == birthMonth && today.get(Calendar.DAY_OF_MONTH) < birthDay)) {
+                age--;
+            }
+            return age;
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
 
