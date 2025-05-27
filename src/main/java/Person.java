@@ -302,6 +302,17 @@ public class Person {
                     isSuspended = true;
                 }
 
+                StringBuilder updatedOffenses = new StringBuilder();
+                for (Map.Entry<String, Integer> entry : offenses.entrySet()) {
+                    if (updatedOffenses.length() > 0) updatedOffenses.append("|");
+                    updatedOffenses.append(entry.getKey()).append(":").append(entry.getValue());
+                }
+
+                String updatedLine = String.join(",", parts[0], parts[1], parts[2], parts[3], parts[4], updatedOffenses.toString(), String.valueOf(isSuspended));
+                lines.add(updatedLine);
+                updated = true;
+            }
+
         } catch (IOException e) {
             return "Failed";
         }
