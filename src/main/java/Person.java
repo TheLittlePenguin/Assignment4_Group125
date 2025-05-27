@@ -275,6 +275,18 @@ public class Person {
                 Map<String, Integer> offenses = parseOffenseData(offenseData);
                 offenses.put(offenseDate, points);
 
+                int recentPoints = 0;
+                for (Map.Entry<String, Integer> entry : offenses.entrySet()) {
+                    if (isWithinLastTwoYears(entry.getKey())) {
+                        recentPoints += entry.getValue();
+                    }
+                }
+
+                int age = calculateAge(birthdate);
+                if ((age < 21 && recentPoints > 6) || (age >= 21 && recentPoints > 12)) {
+                    isSuspended = true;
+                }
+
         } catch (IOException e) {
             return "Failed";
         }
