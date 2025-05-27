@@ -3,6 +3,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -238,6 +240,19 @@ public class Person {
             }
         }
         return offenses;
+    }
+
+    private static boolean isWithinLastTwoYears(String dateStr) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date offenseDate = sdf.parse(dateStr);
+
+            Calendar twoYearsAgo = Calendar.getInstance();
+            twoYearsAgo.add(Calendar.YEAR, -2);
+            return !offenseDate.before(twoYearsAgo.getTime());
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
 
