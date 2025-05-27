@@ -226,6 +226,20 @@ public class Person {
         }
     }
 
+    private static Map<String, Integer> parseOffenseData(String data) {
+        Map<String, Integer> offenses = new HashMap<>();
+        if (data == null || data.trim().isEmpty()) return offenses;
+
+        String[] entries = data.split("\\|");
+        for (String entry : entries) {
+            String[] pair = entry.split(":");
+            if (pair.length == 2) {
+                offenses.put(pair[0], Integer.parseInt(pair[1]));
+            }
+        }
+        return offenses;
+    }
+
 
 
 
