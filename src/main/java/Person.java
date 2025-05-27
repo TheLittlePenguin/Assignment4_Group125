@@ -164,6 +164,7 @@ public class Person {
         return true;
     }
 
+    //validate personID
     private static boolean isValidPersonID(String personID) {
         if (personID.length() != 10) {
             return false;
