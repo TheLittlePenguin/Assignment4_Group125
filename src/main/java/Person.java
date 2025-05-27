@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -11,7 +12,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 public class Person {
 
@@ -97,12 +97,10 @@ public class Person {
             return false;
         }
 
-        
     }
 
-    public boolean updatePersonalDetails(String personID, String newPersonID, String firstName, String lastName,String address, String birthdate, String filePath) {
-        
-        
+    public boolean updatePersonalDetails(String personID, String newPersonID, String firstName, String lastName, String address, String birthdate, String filePath) {
+
         List<String> lines = new ArrayList<>();
         boolean updated = false;
 
@@ -159,23 +157,30 @@ public class Person {
                 updated = true;
 
                 return true;
-            } 
+            }
         } catch (IOException e) {
             return false;
         }
         return true;
     }
 
-
     private static boolean isValidPersonID(String personID) {
-        if (personID.length() != 10) return false;
+        if (personID.length() != 10) {
+            return false;
+        }
 
-        if (!Character.isDigit(personID.charAt(0)) || !Character.isDigit(personID.charAt(1))) return false;
+        if (!Character.isDigit(personID.charAt(0)) || !Character.isDigit(personID.charAt(1))) {
+            return false;
+        }
         int firstDigit = Character.getNumericValue(personID.charAt(0));
         int secondDigit = Character.getNumericValue(personID.charAt(1));
-        if (firstDigit < 2 || firstDigit > 9 || secondDigit < 2 || secondDigit > 9) return false;
+        if (firstDigit < 2 || firstDigit > 9 || secondDigit < 2 || secondDigit > 9) {
+            return false;
+        }
 
-        if (!Character.isUpperCase(personID.charAt(8)) || !Character.isUpperCase(personID.charAt(9))) return false;
+        if (!Character.isUpperCase(personID.charAt(8)) || !Character.isUpperCase(personID.charAt(9))) {
+            return false;
+        }
 
         int specialCount = 0;
         for (int i = 2; i <= 7; i++) {
@@ -192,9 +197,10 @@ public class Person {
         return parts.length == 5 && parts[3].trim().equalsIgnoreCase("Victoria");
     }
 
-
     private static boolean isValidBirthdate(String birthdate) {
-        if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")) return false;
+        if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            return false;
+        }
 
         try {
             String[] parts = birthdate.split("-");
@@ -218,8 +224,8 @@ public class Person {
             Calendar today = Calendar.getInstance();
             int age = today.get(Calendar.YEAR) - birthYear;
 
-            if (today.get(Calendar.MONTH) + 1 < birthMonth ||
-                (today.get(Calendar.MONTH) + 1 == birthMonth && today.get(Calendar.DAY_OF_MONTH) < birthDay)) {
+            if (today.get(Calendar.MONTH) + 1 < birthMonth
+                    || (today.get(Calendar.MONTH) + 1 == birthMonth && today.get(Calendar.DAY_OF_MONTH) < birthDay)) {
                 age--;
             }
             return age;
@@ -230,7 +236,9 @@ public class Person {
 
     private static Map<String, Integer> parseOffenseData(String data) {
         Map<String, Integer> offenses = new HashMap<>();
-        if (data == null || data.trim().isEmpty()) return offenses;
+        if (data == null || data.trim().isEmpty()) {
+            return offenses;
+        }
 
         String[] entries = data.split("\\|");
         for (String entry : entries) {
@@ -255,21 +263,18 @@ public class Person {
         }
     }
 
-
-
-
-
-    
-
     public String addDemeritPoints(String personID, String offenseDate, int points, String filePath) {
 
-        if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) return "Failed";
+        if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) {
+            return "Failed";
+        }
 
-        if (points < 1 || points > 6) return "Failed";
+        if (points < 1 || points > 6) {
+            return "Failed";
+        }
 
         List<String> lines = new ArrayList<>();
         boolean updated = false;
-
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
@@ -304,7 +309,9 @@ public class Person {
 
                 StringBuilder updatedOffenses = new StringBuilder();
                 for (Map.Entry<String, Integer> entry : offenses.entrySet()) {
-                    if (updatedOffenses.length() > 0) updatedOffenses.append("|");
+                    if (updatedOffenses.length() > 0) {
+                        updatedOffenses.append("|");
+                    }
                     updatedOffenses.append(entry.getKey()).append(":").append(entry.getValue());
                 }
 
@@ -318,7 +325,6 @@ public class Person {
         }
 
         return "Success";
-        }
+    }
 
-}
 }
