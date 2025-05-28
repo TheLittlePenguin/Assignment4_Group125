@@ -1,3 +1,4 @@
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -26,7 +27,7 @@ public class PersonTest {
         new File(TEST_FILE).delete();
     }
 
-        @Test
+    @Test
     public void testAddPersonValid() {
         boolean result = Person.addPerson("56s_d%&fAB", "32|Highland Street|Melbourne|Victoria|Australia", "15-11-1990", TEST_FILE);
         assertTrue(result, "Should add valid person");
@@ -56,7 +57,4 @@ public class PersonTest {
         assertFalse(result, "ID must have at least two special characters");
     }
 
-
-
-    
 }
