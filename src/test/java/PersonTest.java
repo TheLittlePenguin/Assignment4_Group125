@@ -57,4 +57,35 @@ public class PersonTest {
         assertFalse(result, "ID must have at least two special characters");
     }
 
+    @Test
+    public void testUpdateValidDetails() {
+        boolean result = Person.updatePersonalDetails("56s_d%&fAB", "56s_d%&fAB", "John", "Smith", "32|Highland Street|Melbourne|Victoria|Australia", "15-11-1990", TEST_FILE);
+        assertTrue(result, "Valid update with same birthday");
+    }
+
+    @Test
+    public void testUpdateFailsOnUnder18AddressChange() {
+        boolean result = Person.updatePersonalDetails("56s_d%&fAB", "56s_d%&fAB", "John", "Doe", "33|New Street|Melbourne|Victoria|Australia", "25-05-2010", TEST_FILE);
+        assertFalse(result, "Under 18 cannot change address");
+    }
+
+    @Test
+    public void testUpdateFailsOnBirthdayChangeWithOtherChanges() {
+        boolean result = Person.updatePersonalDetails("56s_d%&fAB", "56s_d%&fAB", "John", "New", "32|Highland Street|Melbourne|Victoria|Australia", "16-11-1990", TEST_FILE);
+        assertFalse(result, "Cannot change birthday and other fields together");
+    }
+
+    @Test
+    public void testUpdateFailsIfIDStartsWithEvenAndChanges() {
+        boolean result = Person.updatePersonalDetails("56s_d%&fAB", "76s_d%&fAB", "John", "Doe", "32|Highland Street|Melbourne|Victoria|Australia", "15-11-1990", TEST_FILE);
+        assertFalse(result, "Even-starting ID cannot be changed");
+    }
+
+    @Test
+    public void testUpdateFailsWithInvalidNewAddress() {
+        boolean result = Person.updatePersonalDetails("56s_d%&fAB", "56s_d%&fAB", "John", "Doe", "123|Main|Melbourne|QLD|Australia", "15-11-1990", TEST_FILE);
+        assertFalse(result, "Invalid address (wrong state)");
+    }
+
+
 }
