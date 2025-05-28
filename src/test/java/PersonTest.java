@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.junit.jupiter.api.AfterEach;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
@@ -86,6 +88,38 @@ public class PersonTest {
         boolean result = Person.updatePersonalDetails("56s_d%&fAB", "56s_d%&fAB", "John", "Doe", "123|Main|Melbourne|QLD|Australia", "15-11-1990", TEST_FILE);
         assertFalse(result, "Invalid address (wrong state)");
     }
+
+        @Test
+    public void testAddValidDemeritPointsUnderLimit() {
+        String result = Person.addDemeritPoints("56s_d%&fAB", "20-06-2024", 3, TEST_FILE);
+        assertEquals("Success", result, "Should add valid points");
+    }
+
+    @Test
+    public void testAddDemeritPointsInvalidDateFormat() {
+        String result = Person.addDemeritPoints("56s_d%&fAB", "2024/06/20", 3, TEST_FILE);
+        assertEquals("Failed", result, "Invalid date format");
+    }
+
+    @Test
+    public void testAddDemeritPointsInvalidRange() {
+        String result = Person.addDemeritPoints("56s_d%&fAB", "20-06-2024", 10, TEST_FILE);
+        assertEquals("Failed", result, "Points must be 1-6");
+    }
+
+    @Test
+    public void testSuspensionForUnder21ExceedingLimit() {
+        Person.addDemeritPoints("56s_d%&fAB", "15-01-2024", 4, TEST_FILE);
+        String result = Person.addDemeritPoints("56s_d%&fAB", "20-01-2024", 3, TEST_FILE);
+        assertEquals("Success", result, "Should add and suspend under-21");
+    }
+
+    @Test
+    public void testAddDemeritPointsPersonNotFound() {
+        String result = Person.addDemeritPoints("XX1_INVALID", "20-06-2024", 3, TEST_FILE);
+        assertEquals("Failed", result, "Person does not exist");
+    }
+
 
 
 }

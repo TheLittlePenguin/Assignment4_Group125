@@ -121,7 +121,7 @@ public class Person {
                 String existingAddress = data[3];
                 String existingBirthdate = data[4];
 
-                if (!existingID.equals(personID)) {
+                if (!existingID.equals(newPersonID)) {
                     lines.add(line);
                     continue;
                 }
@@ -267,7 +267,7 @@ public class Person {
         }
     }
 
-    public String addDemeritPoints(String personID, String offenseDate, int points, String filePath) {
+    public static String addDemeritPoints(String personID, String offenseDate, int points, String filePath) {
 
         //validating input data
         if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) {
