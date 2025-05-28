@@ -26,7 +26,7 @@ public class Person {
     private String offenseDate;
     private int points;
 
-    public boolean addPerson(String personID, String address, String birthdate, String filePath) {
+    public static boolean addPerson(String personID, String address, String birthdate, String filePath) {
 
         // condition 1 start
         if (personID.length() != 10) {
