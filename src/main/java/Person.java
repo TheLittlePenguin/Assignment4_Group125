@@ -269,7 +269,7 @@ public class Person {
 
     public static String addDemeritPoints(String personID, String offenseDate, int points, String filePath) {
 
-        //validating input data
+        
         if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) {
             return "Failed";
         }
@@ -280,6 +280,8 @@ public class Person {
 
         List<String> lines = new ArrayList<>();
         boolean updated = false;
+
+        
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
@@ -325,7 +327,12 @@ public class Person {
                 String updatedLine = String.join(",", parts[0], parts[1], parts[2], parts[3], parts[4], updatedOffenses.toString(), String.valueOf(isSuspended));
                 lines.add(updatedLine);
                 updated = true;
+                if (!found) {
+                    return "Failed";
+                }
             }
+
+            
 
         } catch (IOException e) {
             return "Failed";
