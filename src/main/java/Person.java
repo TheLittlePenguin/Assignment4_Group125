@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -215,7 +216,7 @@ public class Person {
             return false;
         }
     }
-    
+
     //calculating age
     private static int calculateAge(String birthdate) {
         try {
@@ -269,7 +270,6 @@ public class Person {
 
     public static String addDemeritPoints(String personID, String offenseDate, int points, String filePath) {
 
-        
         if (!offenseDate.matches("\\d{2}-\\d{2}-\\d{4}")) {
             return "Failed";
         }
@@ -281,8 +281,6 @@ public class Person {
         List<String> lines = new ArrayList<>();
         boolean updated = false;
         boolean found = false;
-
-        
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
@@ -296,6 +294,7 @@ public class Person {
                     continue;
                 }
 
+                found = true;
                 String birthdate = parts[4];
                 String offenseData = parts[5];
                 boolean isSuspended = parts.length > 6 && parts[6].equalsIgnoreCase("true");
@@ -309,7 +308,7 @@ public class Person {
                         recentPoints += entry.getValue();
                     }
                 }
-                
+
                 //calculating age against current demerit points
                 int age = calculateAge(birthdate);
                 if ((age < 21 && recentPoints > 6) || (age >= 21 && recentPoints > 12)) {
@@ -333,9 +332,11 @@ public class Person {
                 }
             }
 
-            
-
         } catch (IOException e) {
+            return "Failed";
+        }
+
+        if (!found) {
             return "Failed";
         }
 
