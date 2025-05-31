@@ -280,6 +280,7 @@ public class Person {
 
         List<String> lines = new ArrayList<>();
         boolean updated = false;
+        boolean found = false;
 
         
 
