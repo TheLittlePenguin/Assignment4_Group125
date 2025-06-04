@@ -28,6 +28,7 @@ public class PersonTest {
         new File(TEST_FILE).delete();
     }
 
+    //Add person tests
     @Test
     public void testAddPersonValid() {
         boolean result = Person.addPerson("56s_d%&fAB", "32|Highland Street|Melbourne|Victoria|Australia", "15-11-1990", TEST_FILE);
@@ -58,6 +59,9 @@ public class PersonTest {
         assertFalse(result, "ID must have at least two special characters");
     }
 
+
+
+    //Updating details tests
     @Test
     public void testUpdateValidDetails() {
         boolean result = Person.updatePersonalDetails("56s_d%&fAB", "56s_d%&fAB", "John", "Smith", "32|Highland Street|Melbourne|Victoria|Australia", "15-11-1990", TEST_FILE);
@@ -88,6 +92,7 @@ public class PersonTest {
         assertFalse(result, "Invalid address (wrong state)");
     }
 
+    //Demerit Point tests
         @Test
     public void testAddValidDemeritPointsUnderLimit() {
         String result = Person.addDemeritPoints("56s_d%&fAB", "20-06-2024", 3, TEST_FILE);

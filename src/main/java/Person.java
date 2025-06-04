@@ -159,10 +159,11 @@ public class Person {
 
                 return true;
             }
+            
         } catch (IOException e) {
             return false;
         }
-        return true;
+        return false;
     }
 
     //validate personID
