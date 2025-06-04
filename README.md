@@ -1,3 +1,3 @@
 # Assignment4_Group125
 
-Need to add steps for running tests and steps for presentation
+Github actions are automatically ran when pushing another commit, github tests are found under the test folder in the src folder. 
