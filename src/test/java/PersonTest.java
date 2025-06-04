@@ -1,10 +1,8 @@
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,10 +21,10 @@ public class PersonTest {
         }
     }
 
-    @AfterEach
-    public void cleanup() {
-        new File(TEST_FILE).delete();
-    }
+    //@AfterEach
+    //public void cleanup() {
+    //    new File(TEST_FILE).delete();
+    //}
 
     //Add person tests
     @Test
